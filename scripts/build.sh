@@ -10,9 +10,9 @@ export SCRIPT_DIR=/opt/app/scriptDir
 export CODE_DIR=/opt/app/codeDir
 echo $CODE_DIR
 echo $SCRIPT_DIR
-
+cd CODE_DIR
 mvn clean compile
 mvn test
-mvn clean install
+mvn package
 docker ps
 
