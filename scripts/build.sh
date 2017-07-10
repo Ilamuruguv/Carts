@@ -11,7 +11,7 @@ export CODE_DIR=/opt/app/codeDir
 echo $CODE_DIR
 sudo docker run --rm -v /home/ec2-user/.m2:/root/.m2 -v $CODE_DIR:/usr/src/mymaven -w /usr/src/mymaven maven:3.3.9 mvn -q -DskipTests package
 
-cp $CODE_DIR/target/*.jar $CODE_DIR/docker/carts
+sudo cp $CODE_DIR/target/*.jar $CODE_DIR/docker/carts
 
 for m in ./docker/*/; do
    
