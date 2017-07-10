@@ -11,8 +11,8 @@ export CODE_DIR=/opt/app/codeDir
 echo $CODE_DIR
 echo $SCRIPT_DIR
 
-mvn -DskipTests -Dmaven.test.skip=true -s clean compile
-mvn -s test
-mvn -DskipTests -Dmaven.test.skip=true -s package
+mvn clean compile
+mvn test
+mvn package
 docker ps
 
