@@ -13,6 +13,6 @@ echo $SCRIPT_DIR
 
 mvn clean compile
 mvn test
-mvn clean package
+mvn clean install
 docker ps
 
