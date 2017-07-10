@@ -9,15 +9,10 @@ export SCRIPT_DIR=/opt/app/scriptDir
 
 export CODE_DIR=/opt/app/codeDir
 echo $CODE_DIR
-sudo docker run --rm -v /home/ec2-user/.m2:/root/.m2 -v $CODE_DIR:/usr/src/mymaven -w /usr/src/mymaven maven:3.3.9 mvn -q -DskipTests package
+echo $SCRIPT_DIR
 
-sudo cp $CODE_DIR/target/*.jar $CODE_DIR/docker/carts
+mvn -DskipTests -Dmaven.test.skip=true -s clean compile
+mvn -s test
+mvn -DskipTests -Dmaven.test.skip=true -s package
+docker ps
 
-for m in ./docker/*/; do
-   
-    sudo docker build \
-      --build-arg BUILD_VERSION=$BUILD_VERSION \
-      --build-arg BUILD_DATE=$BUILD_DATE \
-      --build-arg COMMIT=$COMMIT \
-      -t $CODE_DIR/$m;
-done;
