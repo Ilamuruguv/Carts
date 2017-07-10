@@ -5,14 +5,11 @@ set -ev
 export BUILD_VERSION="0.0.2-SNAPSHOT"
 export BUILD_DATE='date +%Y-%m-%dT%T%z'
 
-export SCRIPT_DIR=/opt/app/scriptDir
+pwd
 
-export CODE_DIR=/opt/app/codeDir
-echo $CODE_DIR
-echo $SCRIPT_DIR
-cd CODE_DIR
-mvn clean compile
-mvn test
-mvn package
-docker ps
+mvnpath="/opt/app/maven/maven/bin"
+$mvnpath/mvn clean compile
+$mvnpath/mvn test
+$mvnpath/mvn package
+ sudo docker ps
 
