@@ -5,7 +5,7 @@ set -ev
 export BUILD_VERSION="0.0.2-SNAPSHOT"
 export BUILD_DATE='date +%Y-%m-%dT%T%z'
 
-SCRIPT_DIR=$(dirname "$0")
+SCRIPT_DIR=/opt/app/scriptDir
 
 if [[ -z "$GROUP" ]] ; then
     echo "Cannot find GROUP env var"
