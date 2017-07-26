@@ -48,7 +48,7 @@ node("docker") {
 	
 	// Create kubectl.conf  file here from Pipeline properties provided.
 	
-	withEnv(["PATH=${env.PATH}") { 
+	withEnv(["PATH=${env.PATH}:${tool 'M3'}/bin:${tool 'jdk1.8'}/bin", "JAVA_HOME=${tool 'jdk1.8'}", "MAVEN_HOME=${tool 'M3'}"]) { 
 			
 		echo "JAVA_HOME=${env.JAVA_HOME}"
 		echo "MAVEN_HOME=${env.MAVEN_HOME}"
