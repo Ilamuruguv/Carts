@@ -70,7 +70,7 @@ node("docker") {
 				stage 'Package' 
 		    	sh 'mvn -DskipTests -Dmaven.test.skip=true package' 
  
-				sh 'docker build -t cart-app .'
+				sh 'docker build -t carts .'
  
 				
 				
