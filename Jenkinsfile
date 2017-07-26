@@ -42,8 +42,8 @@ node("docker") {
 	REPLICA_COUNT="${params.K8S_PODS_REPLICAS}"
 	IMAGE_NAME=pom.properties['docker.registry']+"/"+NAMESPACE+"/"+pom.artifactId+":latest"
 	echo "Artifact: " + PROJECT_NAME
-	env.DOCKER_HOST="tcp://localhost:4243"
-	env.DOCKER_CONFIG="${WORKSPACE}/.docker" 
+	//env.DOCKER_HOST="tcp://localhost:4243"
+	//env.DOCKER_CONFIG="${WORKSPACE}/.docker" 
 	def branchName
 	
 	// Create kubectl.conf  file here from Pipeline properties provided.
