@@ -66,14 +66,11 @@ node("docker") {
 				stage 'Compile' 
 		    	sh 'mvn -DskipTests -Dmaven.test.skip=true   clean compile' 
  
-				stage 'Unit Test' 
-	    		sh 'mvn  test' 
- 
+				
 				stage 'Package' 
 		    	sh 'mvn -DskipTests -Dmaven.test.skip=true package' 
  
-				stage 'Verify' 
-		    	sh 'mvn -DskipTests -Dmaven.test.skip=true  verify' 
+				
  
 				
 				stage 'Publish Artifact'
