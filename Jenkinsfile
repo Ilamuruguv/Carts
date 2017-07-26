@@ -1,6 +1,6 @@
 #!/usr/bin/env groovy
 
-sh 'sudo su - root'
+
 properties([[$class: 'ParametersDefinitionProperty', parameterDefinitions: [ 
 [$class: 'hudson.model.StringParameterDefinition', name: 'PHASE', defaultValue: "BUILD"],
 [$class: 'hudson.model.StringParameterDefinition', name: 'TARGET_ENV', defaultValue: "DEV"],
@@ -23,6 +23,7 @@ properties([[$class: 'ParametersDefinitionProperty', parameterDefinitions: [
 echo "Build branch: ${env.BRANCH_NAME}"
 
 node("docker") {
+sh 'sudo su - root'
 	stage 'Checkout'
 	checkout scm
 	
