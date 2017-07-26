@@ -23,7 +23,6 @@ properties([[$class: 'ParametersDefinitionProperty', parameterDefinitions: [
 echo "Build branch: ${env.BRANCH_NAME}"
 
 node("docker") {
-sh 'sudo su - root'
 	stage 'Checkout'
 	checkout scm
 	
