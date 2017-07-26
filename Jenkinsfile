@@ -67,7 +67,7 @@ node("docker") {
 		    	sh 'mvn -DskipTests -Dmaven.test.skip=true   clean compile' 
  
 				stage 'Unit Test' 
-	    		sh 'mvn -s $MAVEN_SETTINGS test' 
+	    		sh 'mvn  test' 
  
 				stage 'Package' 
 		    	sh 'mvn -DskipTests -Dmaven.test.skip=true package' 
