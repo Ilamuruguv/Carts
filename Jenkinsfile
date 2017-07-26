@@ -70,12 +70,10 @@ node("docker") {
 				stage 'Package' 
 		    	sh 'mvn -DskipTests -Dmaven.test.skip=true package' 
  
-				
+				sh 'docker build -t cart-app .'
  
 				
-				stage 'Publish Artifact'
-				//sh 'docker ps'
-	    		sh 'mvn  -DskipTests -Dmaven.test.skip=true -Dhttps.protocols="TLSv1"  -U docker:build docker:push'
+				
 	    	
 	    	} 
  
