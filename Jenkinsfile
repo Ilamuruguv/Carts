@@ -54,12 +54,13 @@ node("docker") {
 		echo "MAVEN_HOME=${env.MAVEN_HOME}"
 		echo "PATH=${env.PATH}"
 
-		wrap([$class: 'ConfigFileBuildWrapper', managedFiles: [
+		/** wrap([$class: 'ConfigFileBuildWrapper', managedFiles: [
 			[fileId: 'maven-settings.xml', variable: 'MAVEN_SETTINGS'],
 			]]) {
 			
+			*/
 			 branchName = (env.BRANCH_NAME ?: "master").replaceAll(/[^0-9a-zA-Z_]/, "-")
-			
+			 
 			
 			if ("${PHASE}" == "BUILD" || "${PHASE}" == "BUILD_DEPLOY" ) { 
 				stage 'Compile' 
@@ -115,8 +116,8 @@ node("docker") {
 					}
 				}
 			}
-	    	} */
+	    	} 
  
-	}
+	}*/
 }
 }
