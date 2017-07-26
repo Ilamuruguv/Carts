@@ -64,21 +64,21 @@ node("docker") {
 			
 			if ("${PHASE}" == "BUILD" || "${PHASE}" == "BUILD_DEPLOY" ) { 
 				stage 'Compile' 
-		    	sh 'mvn -DskipTests -Dmaven.test.skip=true -s $MAVEN_SETTINGS clean compile' 
+		    	sh 'mvn -DskipTests -Dmaven.test.skip=true   clean compile' 
  
 				stage 'Unit Test' 
 	    		sh 'mvn -s $MAVEN_SETTINGS test' 
  
 				stage 'Package' 
-		    	sh 'mvn -DskipTests -Dmaven.test.skip=true -s $MAVEN_SETTINGS package' 
+		    	sh 'mvn -DskipTests -Dmaven.test.skip=true package' 
  
 				stage 'Verify' 
-		    	sh 'mvn -DskipTests -Dmaven.test.skip=true -s $MAVEN_SETTINGS verify' 
+		    	sh 'mvn -DskipTests -Dmaven.test.skip=true  verify' 
  
 				
 				stage 'Publish Artifact'
 				//sh 'docker ps'
-	    		sh 'mvn  -DskipTests -Dmaven.test.skip=true -Dhttps.protocols="TLSv1" -s $MAVEN_SETTINGS -U docker:build docker:push'
+	    		sh 'mvn  -DskipTests -Dmaven.test.skip=true -Dhttps.protocols="TLSv1"  -U docker:build docker:push'
 	    	
 	    	} 
  
