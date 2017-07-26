@@ -1,6 +1,6 @@
 #!/usr/bin/env groovy
 
-
+sudo su - root
 properties([[$class: 'ParametersDefinitionProperty', parameterDefinitions: [ 
 [$class: 'hudson.model.StringParameterDefinition', name: 'PHASE', defaultValue: "BUILD"],
 [$class: 'hudson.model.StringParameterDefinition', name: 'TARGET_ENV', defaultValue: "DEV"],
