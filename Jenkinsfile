@@ -71,7 +71,7 @@ node("docker") {
 		    	sh 'mvn -DskipTests -Dmaven.test.skip=true package' 
  
 				sh 'docker build -t carts .'
-				sh 'docker login --username=ilamuruguv --password=manika'
+				//sh 'docker login --username=ilamuruguv --password=manika'
 				//sh 'docker tag carts ilamuruguv/com.ila.samples:cats11'
  				//sh 'docker push ilamuruguv/com.ila.samples:carts'
  				
