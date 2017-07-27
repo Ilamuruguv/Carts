@@ -73,7 +73,7 @@ node("docker") {
 				sh 'docker build -t carts .'
 				sh 'docker login --username=ilamuruguv --password=manika'
 				//sh 'docker tag carts ilamuruguv/com.ila.samples:cats11'
- 				sh 'docker push ilamuruguv/com.ila.samples:carts'
+ 				//sh 'docker push ilamuruguv/com.ila.samples:carts'
  				
 				
 				
