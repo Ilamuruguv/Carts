@@ -70,7 +70,7 @@ node("docker") {
 				stage 'Package' 
 		    	sh 'mvn -DskipTests -Dmaven.test.skip=true package' 
  
- 				sh 'sudo usermod -a -G docker ec2-user'
+ 				//sh 'sudo usermod -a -G docker ec2-user'
 				sh 'docker build -t carts .'
 				sh 'docker login --username=ilamuruguv --password=manika'
 				sh 'docker tag carts ilamuruguv/com.ila.samples:cats11'
