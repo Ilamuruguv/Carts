@@ -72,10 +72,10 @@ node("docker") {
 		    	sh 'mvn -DskipTests -Dmaven.test.skip=true package' 
  
  				//sh 'sudo usermod -a -G docker ec2-user'
-				sh 'sudo docker build -t carts .'
-				sh 'sudo docker login --username=ilamuruguv --password=manika'
-				sh 'sudo docker tag carts ilamuruguv/com.ila.samples:cats11'
- 				sh 'sudo docker push ilamuruguv/com.ila.samples:carts'
+				sh 'docker build -t carts .'
+				sh 'docker login --username=ilamuruguv --password=manika'
+				sh 'docker tag carts ilamuruguv/com.ila.samples:cats11'
+ 				sh 'docker push ilamuruguv/com.ila.samples:carts'
  				
 				
 				
