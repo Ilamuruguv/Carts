@@ -71,7 +71,8 @@ node("docker") {
 		    	sh 'mvn -DskipTests -Dmaven.test.skip=true package' 
  
 				sh 'docker build -t carts .'
- 
+ 				sh 'docker push ilamuruguv/com.ila.samples:carts-app'
+ 				
 				
 				
 	    	
