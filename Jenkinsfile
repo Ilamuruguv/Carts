@@ -74,8 +74,8 @@ node("docker") {
  				//sh 'sudo usermod -a -G docker ec2-user'
 				sh 'docker build -t carts .'
 				sh 'docker login --username=ilamuruguv --password=manika'
-				sh 'docker tag carts ilamuruguv/com.ila.samples:cats11'
- 				sh 'docker push ilamuruguv/com.ila.samples:carts'
+				sh 'docker tag carts ilamuruguv/com.ila.samples:cartsNew'
+ 				sh 'docker push ilamuruguv/com.ila.samples:cartsNew'
  				
 				
 				
