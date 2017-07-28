@@ -25,7 +25,7 @@ echo "Build branch: ${env.BRANCH_NAME}"
 node("docker") {
 	stage 'Checkout'
 	checkout scm
-	
+	sh 'export GOOGLE_APPLICATION_CREDENTIALS=/var/jenkins/docker/workspace/Carts-Pipeline'
 	pom = readMavenPom file: 'pom.xml'
 	PROJECT_NAME = pom.groupId ?: pom.parent.groupId + ":" + pom.artifactId;
 	SERVICE_NAME=pom.artifactId;
@@ -78,8 +78,8 @@ node("docker") {
 				sh 'docker tag carts ilamuruguv/com.ila.samples:carts28'
  				sh 'docker push ilamuruguv/com.ila.samples:carts28'
  				
- 				sh 'export GOOGLE_APPLICATION_CREDENTIALS=/var/jenkins/docker/workspace/Carts-Pipeline'
- 				sh 'gcloud auth activate-service-account --key-file=/var/jenkins/docker/workspace/Carts-Pipeline/login.json'
+ 				
+ 				sh 'gcloud auth activate-service-account --key-file=/var/jenkins/docker/workspace/Carts-Pipeline/loginIla.json'
 				sh 'gcloud container clusters get-credentials cluster-1 --zone us-central1-a --project mykubecluster-175021'
 				
 				sh 'kubectl create secret docker-registry regsecret --docker-server=https://hub.docker.com/r/ilamuruguv/com.ila.samples/ --docker-username=ilamuruguv --docker-password=manika --docker-email=ilamuruguv@gmail.com'
