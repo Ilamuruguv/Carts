@@ -81,6 +81,7 @@ node("docker") {
  				
  				sh 'gcloud auth activate-service-account --key-file=/var/jenkins/docker/workspace/Carts-Pipeline/loginIla.json'
 				sh 'gcloud container clusters get-credentials cluster-1 --zone us-central1-a --project mykubecluster-175021'
+				sh 'gcloud config set compute/zone us-central1-a'
 				
 				sh 'kubectl create secret docker-registry regsecret --docker-server=https://hub.docker.com/r/ilamuruguv/com.ila.samples/ --docker-username=ilamuruguv --docker-password=manika --docker-email=ilamuruguv@gmail.com'
 				sh 'kubectl create -f carts-deploy.yaml'
