@@ -78,8 +78,10 @@ node("docker") {
 				sh 'docker tag carts ilamuruguv/com.ila.samples:carts28'
  				sh 'docker push ilamuruguv/com.ila.samples:carts28'
  				
- 				sh 'gcloud auth activate-service-account --key-file=loginEscape.json'
+ 				sh 'export GOOGLE_APPLICATION_CREDENTIALS=/home/ec2-user/myk8sample/'
+ 				sh 'gcloud auth activate-service-account --key-file=/home/ec2-user/myk8sample/login.json'
 				sh 'gcloud container clusters get-credentials cluster-1 --zone us-central1-a --project mykubecluster-175021'
+				
 				sh 'kubectl create secret docker-registry regsecret --docker-server=https://hub.docker.com/r/ilamuruguv/com.ila.samples/ --docker-username=ilamuruguv --docker-password=manika --docker-email=ilamuruguv@gmail.com'
 				sh 'kubectl create -f carts-deploy.yaml'
 				sh 'kubectl create -f expose-svc.yaml'
