@@ -1,6 +1,18 @@
 #!/usr/bin/env groovy
 
 
+properties([[$class: 'ParametersDefinitionProperty', parameterDefinitions: [ 
+[$class: 'hudson.model.StringParameterDefinition', name: 'PHASE', defaultValue: "BUILD"],
+[$class: 'hudson.model.StringParameterDefinition', name: 'TARGET_ENV', defaultValue: "DEV"],
+[$class: 'hudson.model.StringParameterDefinition', name: 'K8S_CLUSTER_URL',defaultValue: " https://104.198.144.20"],
+[$class: 'hudson.model.StringParameterDefinition', name: 'K8S_CONTEXT',defaultValue: "default"],
+[$class: 'hudson.model.StringParameterDefinition', name: 'K8S_USERNAME',defaultValue: "admin"],
+[$class: 'hudson.model.PasswordParameterDefinition', name: 'K8S_PASSWORD',defaultValue: ""],
+[$class: 'hudson.model.StringParameterDefinition', name: 'K8S_NAME',defaultValue: "ila"],
+[$class: 'hudson.model.StringParameterDefinition', name: 'K8S_PODS_REPLICAS',defaultValue: "1"],
+[$class: 'hudson.model.StringParameterDefinition', name: 'K8S_SERVICE_ACCOUNT',defaultValue: "default"],
+[$class: 'hudson.model.BooleanParameterDefinition', name: 'USE_ROOT_NS',defaultValue: false]
+]]])
 
 /**
     jdk1.8 = fixed name for java
