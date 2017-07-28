@@ -1,0 +1,14 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: carts-service
+  labels: 
+    app: carts-service
+spec:
+  selector:
+    app: carts-app	
+  ports:
+    - protocol: TCP
+      port: 8085
+      targetPort: 7080
+  type: LoadBalancer

@@ -1,0 +1,16 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: carts-app
+spec:
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: carts-app
+    spec:
+      containers:
+      - name: carts-app
+        image: ilamuruguv/com.ila.samples:carts28
+        ports:
+        - containerPort: 7080
