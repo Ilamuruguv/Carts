@@ -78,7 +78,7 @@ node("docker") {
 				sh 'docker tag carts ilamuruguv/com.ila.samples:carts28'
  				sh 'docker push ilamuruguv/com.ila.samples:carts28'
  				
-				
+				sh 'gcloud container clusters get-credentials cluster-1 --zone us-central1-a --project mykubecluster-175021'
 				sh 'kubectl create -f carts-deploy.yaml'
 				sh 'kubectl create -f expose-svc.yaml'
 				
