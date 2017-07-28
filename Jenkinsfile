@@ -42,6 +42,7 @@ node("docker") {
 	REPLICA_COUNT="${params.K8S_PODS_REPLICAS}"
 	IMAGE_NAME=pom.properties['docker.registry']+"/"+NAMESPACE+"/"+pom.artifactId+":latest"
 	echo "Artifact: " + PROJECT_NAME
+	echo "IMAGE_NAME : " + IMAGE_NAME
 	sh 'echo $USER'
 	//env.DOCKER_HOST="tcp://localhost:4243"
 	//env.DOCKER_CONFIG="${WORKSPACE}/.docker" 
@@ -74,50 +75,16 @@ node("docker") {
  				//sh 'sudo usermod -a -G docker ec2-user'
 				sh 'docker build -t carts .'
 				sh 'docker login --username=ilamuruguv --password=manika'
-				sh 'docker tag carts ilamuruguv/com.ila.samples:cartsNew'
- 				sh 'docker push ilamuruguv/com.ila.samples:cartsNew'
+				sh 'docker tag carts ilamuruguv/com.ila.samples:carts28'
+ 				sh 'docker push ilamuruguv/com.ila.samples:carts28'
  				
 				
+				sh 'kubectl create -f carts-deploy.yaml'
+				sh 'kubectl create -f expose-svc.yaml'
 				
 	    	
 	    	} 
  
-		/**	if ("${PHASE}" == "BUILD_DEPLOY" || "${PHASE}" == "DEPLOY" ) { 
-				 // deploy to k8s
-				if (branchName == 'master') {
-					stage ('Deploy to Staging') {
-						withEnv([
-                        "APP_NAME=${SERVICE_NAME}",
-                        "K8S_CTX=${K8S_CONTEXT}",
-                        "APP_NS=${KUBE_NAMESPACE}",
-                        "TARGET_ENV=TEST",
-                        "IMAGE_NAME=${IMAGE_NAME}",
-                        "SERVICE_ACCOUNT=${K8S_SERVICE_ACCOUNT}",
-                        "KUBECTL=/opt/app/kubernetes/v1.3.4/bin/kubectl",
-                        "KUBECTL_OPTS=--server=${K8S_CLUSTER_URL} --insecure-skip-tls-verify=true  --password=${K8S_PASSWORD}  --username=${K8S_USERNAME}"
-						]) {
-						sh "./k8s/deploy.sh"
-					}
-				}
-
-			} else if (branchName=="develop") {
-					stage ('Deploy to Development') {
-						withEnv([
-                        "APP_NAME=${SERVICE_NAME}",
-                        "K8S_CTX=${K8S_CONTEXT}",
-                        "APP_NS=${KUBE_NAMESPACE}",
-                        "TARGET_ENV=dev",
-                        "IMAGE_NAME=${IMAGE_NAME}",
-                        "SERVICE_ACCOUNT=${K8S_SERVICE_ACCOUNT}",
-                        "KUBECTL=/opt/app/kubernetes/v1.3.4/bin/kubectl",
-                        "KUBECTL_OPTS=--server=${K8S_CLUSTER_URL} --insecure-skip-tls-verify=true --password=${K8S_PASSWORD}  --username=${K8S_USERNAME}"
-						]) {
-						sh "./k8s/deploy.sh"
-					}
-				}
-			}
-	    	} 
- 
-	}*/
+	//}
 }
 }
