@@ -26,6 +26,7 @@ node("docker") {
 	stage 'Checkout'
 	checkout scm
 	sh 'export GOOGLE_APPLICATION_CREDENTIALS=/var/jenkins/docker/workspace/Carts-Pipeline'
+	sh 'export PATH=${env.PATH}:GOOGLE_APPLICATION_CREDENTIALS'
 	pom = readMavenPom file: 'pom.xml'
 	PROJECT_NAME = pom.groupId ?: pom.parent.groupId + ":" + pom.artifactId;
 	SERVICE_NAME=pom.artifactId;
