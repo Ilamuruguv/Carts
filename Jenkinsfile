@@ -67,11 +67,11 @@ node("docker") {
 			
 			if ("${PHASE}" == "BUILD" || "${PHASE}" == "BUILD_DEPLOY" ) { 
 				stage 'Compile' 
-		    	//sh 'mvn -DskipTests -Dmaven.test.skip=true   clean compile' 
+		    	sh 'mvn -DskipTests -Dmaven.test.skip=true   clean compile' 
  
 				
 				stage 'Package' 
-		    	//sh 'mvn -DskipTests -Dmaven.test.skip=true package' 
+		    	sh 'mvn -DskipTests -Dmaven.test.skip=true package' 
  
  				//sh 'sudo usermod -a -G docker ec2-user'
 				sh 'docker build -t carts .'
